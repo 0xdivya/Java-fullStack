@@ -1,7 +1,7 @@
 class Parent{
     int a=10;
     int b=20;
-    void display(){
+    private void display(){
         System.out.println(a);
         System.out.println(b);
     }
@@ -15,7 +15,7 @@ public class inheritance01 {
         //property of parent class
         System.out.println(obj.a);
         //behavior of parent class
-        obj.display();
+        obj.display(); //error because display is private
         
     }
 }

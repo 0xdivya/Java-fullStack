@@ -1,55 +1,67 @@
+class LaptopApp{
+    public static void main(String[] args) {
+        Laptop l = new Laptop();
+        Charger c = new Charger("Dell", 65);
+        System.out.println(c.getBrand());
+        l=null;
+        l.hasA(c);
+      
+        System.gc(); 
+    }
+}
 
-class charger{
-    private String type;
-    private int power;
-    public charger(String type,int power){
-        this.type=type;
-        this.power=power;
+class Laptop{
+    OS os = new OS("Windows", 10);
+    void hasA(Charger c){
+        System.out.println(c.getBrand());
+        System.out.println(c.getPower());
+
     }
-    public void setType(String type){
-        this.type = type;
-    }
-    public String getType(){
-        return type;
+}
+
+class Charger{
+    String brand;
+    int power;
+
+    Charger(String brand, int power){
+        this.brand = brand;
+        this.power = power;
     }
 
+    public String getBrand(){
+        return brand;
+    }
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
+    
     public int getPower(){
         return power;
     }
-
-    
+    public void setPower(int power){
+        this.power = power;
+    }
 }
 
-class operatingSystem{
-    private String name;
-    private String version;
-
-    public operatingSystem (String name, String version){
-        this.name = name;
+class OS{
+    String brand;
+    double version;
+    public OS(String brand, double version){
+        super();
+        this.brand = brand;
         this.version = version;
     }
-
-    public void setVersion(String version){
-        this.version = version;
+     public String getBrand(){
+        return brand;
     }
-    public void setName(String name){
-        this.name = name;
+    public void setBrand(String brand){
+        this.brand = brand;
     }
-
-    public String getName(){
-        return name;
-    }
-
-    public String getVersion(){
+    
+    public double getVersion(){
         return version;
     }
-    
-}
-public class LaptopApp {
-
-	public static void main(String[] args) {
-        
-
-	}
-
+    public void setVersion(double version){
+        this.version = version;
+    }
 }

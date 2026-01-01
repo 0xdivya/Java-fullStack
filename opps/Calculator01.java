@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 abstract class Shape{
      int area;
     abstract void findArea();
@@ -9,6 +11,7 @@ class Circle extends Shape{
     Circle(int radius){
         this.radius = radius;
     }
+    
     void findArea(){
         area = (int)(3.14*radius*radius);
     }
@@ -24,6 +27,7 @@ class Triangle extends Shape{
         base = b;
         height = h;
     }
+    
     void findArea(){
         area = (base*height)/2;
     }
@@ -47,9 +51,37 @@ class Square extends Shape{
 }
 public class Calculator01 {
     public static void main(String[] args) {
-        calculateArea(new Circle(7));
-        calculateArea(new Triangle(5, 10));
-        calculateArea(new Square(5));
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Select Shape to calculate area:");
+        System.out.println("1.To calculate circle enter Circle");
+        System.out.println("2.To calculate triangle enter Triangle");
+        System.out.println("3.To calculate square enter Square");
+        String s = sc.nextLine();
+        switch (s) {
+            case "Circle":
+                System.out.println("Calculating area of Circle");
+                System.out.println("Enter radius:");
+                int radius = sc.nextInt();
+                calculateArea(new Circle(radius));
+                break;
+            case "Triangle":
+                System.out.println("Calculating area of Triangle");
+                System.out.println("Enter base and height:");
+                int base = sc.nextInt();
+                int height = sc.nextInt();
+                calculateArea(new Triangle(base, height));
+                break;
+            case "Square":
+                System.out.println("Calculating area of Square");
+                System.out.println("Enter side:");
+                int side = sc.nextInt();
+                calculateArea(new Square(side));
+                break;
+            default:
+                System.out.println("Invalid shape");
+                break;
+        }
+        
     }
     static void calculateArea(Shape s){
         s.findArea();
